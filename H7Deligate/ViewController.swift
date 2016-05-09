@@ -8,8 +8,39 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController ,UITextFieldDelegate{
 
+    
+    
+    
+    @IBOutlet weak var countLabel: UILabel!
+    
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        print("\(textField.text)")
+        print("\(range)")
+        print("\(string)")
+        
+        print("\(textField.text?.characters.count)")
+        
+        //let tempcount = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString:)
+        
+        self.countLabel.text="\((textField.text?.characters.count)! + 1)"
+        
+        if (textField.text?.characters.count)! + 1 < 10 {
+        
+        return true
+        }
+        else {
+           return false
+        }
+        
+    }
+        
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
